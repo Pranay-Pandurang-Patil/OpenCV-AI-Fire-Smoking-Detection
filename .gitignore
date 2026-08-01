@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+.venv/
+
+# VS Code
+.vscode/
+
+# Output Files
+outputs/
+
+# Dataset
+datasets/
+
+# Temporary Images
+*.tmp
+
+# OS Files
+.DS_Store
+Thumbs.db
