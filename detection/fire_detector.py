@@ -12,4 +12,8 @@ def detect(image):
         verbose=False
     )
 
-    return results[0].plot()
+    result = results[0].plot()
+
+    count = len(results[0].boxes)
+
+    return result, count
