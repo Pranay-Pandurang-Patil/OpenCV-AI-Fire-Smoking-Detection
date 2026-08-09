@@ -1,13 +1,19 @@
 from ultralytics import YOLO
 
-model = YOLO("models/smoking/best.onnx", task="detect")
+from config import SMOKING_MODEL_PATH, CONFIDENCE
+
+
+model = YOLO(
+    SMOKING_MODEL_PATH,
+    task="detect"
+)
 
 
 def detect(image):
 
     results = model.predict(
         source=image,
-        conf=0.5,
+        conf=CONFIDENCE,
         verbose=False
     )
 

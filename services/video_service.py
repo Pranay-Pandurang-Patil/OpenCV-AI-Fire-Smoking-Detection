@@ -1,41 +1,58 @@
 import cv2
-import tempfile
-import os
 
 from detection.detector import detect
 
 
-def process_video(mode, video_path):
+def process_video_live(mode, video_path, frame_callback):
 
     cap = cv2.VideoCapture(video_path)
 
-    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    if not cap.isOpened():
+        raise ValueError("Unable to open video file.")
+
     fps = cap.get(cv2.CAP_PROP_FPS)
 
-    output_file = tempfile.NamedTemporaryFile(delete=False, suffix=".mp4")
+    if fps <= 0:
+        fps = 30.0
 
-    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    frame_count = 0
+    total_objects = 0
 
-    out = cv2.VideoWriter(
-        output_file.name,
-        fourcc,
-        fps,
-        (width, height)
-    )
+    try:
 
-    while True:
+        while True:
 
-        ret, frame = cap.read()
+            ret, frame = cap.read()
 
-        if not ret:
-            break
+            if not ret:
+                break
 
-        result, count = detect(mode, frame)
+            # -----------------------------
+            # YOLO DETECTION
+            # -----------------------------
 
-        out.write(result)
+            result, count = detect(
+                mode,
+                frame
+            )
 
-    cap.release()
-    out.release()
+            frame_count += 1
+            total_objects += count
 
-    return output_file.name
+            # -----------------------------
+            # SEND PROCESSED FRAME
+            # TO STREAMLIT
+            # -----------------------------
+
+            frame_callback(
+                result,
+                count,
+                frame_count,
+                fps
+            )
+
+    finally:
+
+        cap.release()
+
+    return frame_count, total_objects
