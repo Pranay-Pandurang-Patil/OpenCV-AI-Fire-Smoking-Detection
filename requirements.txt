@@ -1,6 +1,7 @@
-Flask
-flask-cors
+streamlit
 opencv-python
 numpy
 Pillow
 ultralytics
+streamlit-webrtc
+av
