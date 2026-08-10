@@ -1,45 +1,39 @@
-# ==========================
 # Python
-# ==========================
 __pycache__/
 *.py[cod]
 *.pyo
 
-# ==========================
 # Virtual Environment
-# ==========================
 venv/
 .venv/
 env/
+ENV/
 
-# ==========================
-# VS Code
-# ==========================
+# IDE
 .vscode/
+.idea/
 
-# ==========================
-# Datasets
-# ==========================
-datasets/
+# OS
+.DS_Store
+Thumbs.db
 
-# ==========================
-# Models
-# ==========================
-models/
+# Python tools
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# ==========================
-# Outputs
-# ==========================
+# YOLO model files
+models/**/*.pt
+models/**/*.onnx
+models/**/*.pth
+models/**/*.weights
+
+# Generated outputs
 outputs/
 
-# ==========================
-# Temporary Files
-# ==========================
-*.log
+# Temporary files
 *.tmp
+*.temp
 
-# ==========================
-# Operating System
-# ==========================
-Thumbs.db
-.DS_Store
+# Streamlit
+.streamlit/secrets.toml
