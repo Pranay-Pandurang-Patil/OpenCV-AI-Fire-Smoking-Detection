@@ -528,17 +528,6 @@ Please refer to the original repositories before redistributing their model file
 
 ---
 
-# 📜 License
-
-The application source code in this repository is provided under the license specified in:
-
-    LICENSE
-
-Third-party models and dependencies may have separate licenses.
-
-Users are responsible for complying with the respective licenses of third-party models, libraries, and resources.
-
----
 
 # 👨‍💻 Author
 
