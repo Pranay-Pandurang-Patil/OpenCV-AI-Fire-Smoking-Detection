@@ -7,9 +7,8 @@ from config import FIRE_MODEL_PATH, CONFIDENCE
 
 
 MODEL_URL = (
-    "https://raw.githubusercontent.com/"
-    "luminous0219/fire-and-smoke-detection-yolov8/"
-    "main/weights/best.pt"
+    "https://huggingface.co/PRANAYxPATIL/"
+    "fire-detection-onnx/resolve/main/best.onnx"
 )
 
 
@@ -24,34 +23,14 @@ def download_model():
             exist_ok=True
         )
 
-        print("Downloading fire detection model...")
-
-        temp_model_path = model_path.with_suffix(".pt")
+        print("Downloading fire detection ONNX model...")
 
         urlretrieve(
             MODEL_URL,
-            temp_model_path
-        )
-
-        print("Fire detection model downloaded.")
-
-        print("Exporting fire model to ONNX...")
-
-        temp_model = YOLO(temp_model_path)
-
-        temp_model.export(
-            format="onnx"
-        )
-
-        exported_model = temp_model_path.with_suffix(".onnx")
-
-        exported_model.rename(
             model_path
         )
 
-        temp_model_path.unlink()
-
-        print("Fire ONNX model ready.")
+        print("Fire detection ONNX model downloaded.")
 
 
 download_model()
