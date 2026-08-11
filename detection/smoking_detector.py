@@ -7,9 +7,8 @@ from config import SMOKING_MODEL_PATH, CONFIDENCE
 
 
 MODEL_URL = (
-    "https://raw.githubusercontent.com/"
-    "alihassanml/Smoking-detection-yolo11/"
-    "main/best.onnx"
+    "https://huggingface.co/PRANAYxPATIL/"
+    "smoking-detection-onnx/resolve/main/best.onnx"
 )
 
 
@@ -24,17 +23,18 @@ def download_model():
             exist_ok=True
         )
 
-        print("Downloading smoking detection model...")
+        print("Downloading smoking detection ONNX model...")
 
         urlretrieve(
             MODEL_URL,
             model_path
         )
 
-        print("Smoking detection model downloaded.")
+        print("Smoking detection ONNX model downloaded.")
 
 
 download_model()
+
 
 model = YOLO(
     SMOKING_MODEL_PATH,
