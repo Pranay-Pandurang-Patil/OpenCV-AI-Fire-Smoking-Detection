@@ -33,21 +33,23 @@ The core of this project is **computer vision using OpenCV**.
 
 The application receives an image, video frame, or webcam frame and processes it through the detection pipeline.
 
-    Image / Video / Webcam
-              ↓
-            OpenCV
-              ↓
-         Frame Processing
-              ↓
-        Pre-trained YOLO
-              ↓
-       Object Detection
-              ↓
-     Bounding Boxes / Count
-              ↓
-            OpenCV
-              ↓
-         Streamlit UI
+```text
+Image / Video / Webcam
+          ↓
+        OpenCV
+          ↓
+     Frame Processing
+          ↓
+    Pre-trained YOLO
+          ↓
+   Object Detection
+          ↓
+ Bounding Boxes / Count
+          ↓
+        OpenCV
+          ↓
+     Streamlit UI
+```
 
 OpenCV is responsible for image and video processing.
 
@@ -74,40 +76,42 @@ Streamlit provides the user interface.
 
 ## 📁 Project Structure
 
-    AI-Smoking-Fire-Alert-System/
-    │
-    ├── app.py
-    ├── config.py
-    ├── requirements.txt
-    ├── README.md
-    ├── .gitignore
-    │
-    ├── detection/
-    │   ├── detector.py
-    │   ├── fire_detector.py
-    │   └── smoking_detector.py
-    │
-    ├── services/
-    │   ├── image_service.py
-    │   ├── video_service.py
-    │   └── webcam_service.py
-    │
-    ├── models/
-    │   ├── fire/
-    │   └── smoking/
-    │
-    ├── images/
-    │   └── test images
-    │
-    ├── outputs/
-    │   ├── fire/
-    │   └── smoking/
-    │
-    └── screenshots/
-        ├── fire-detection.png
-        ├── smoking-detection.png
-        ├── video-detection.png
-        └── webcam-detection.png
+```text
+AI-Smoking-Fire-Alert-System/
+│
+├── app.py
+├── config.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+│
+├── detection/
+│   ├── detector.py
+│   ├── fire_detector.py
+│   └── smoking_detector.py
+│
+├── services/
+│   ├── image_service.py
+│   ├── video_service.py
+│   └── webcam_service.py
+│
+├── models/
+│   ├── fire/
+│   └── smoking/
+│
+├── images/
+│   └── test images
+│
+├── outputs/
+│   ├── fire/
+│   └── smoking/
+│
+└── screenshots/
+    ├── fire-detection.png
+    ├── smoking-detection.png
+    ├── video-detection.png
+    └── webcam-detection.png
+```
 
 > The model files are external resources and are not included in this repository.
 
@@ -117,22 +121,30 @@ Streamlit provides the user interface.
 
 ## 1. Clone the Repository
 
-    git clone https://github.com/Pranay-Pandurang-Patil/OpenCV-AI-Fire-Smoking-Detection.git
-    cd OpenCV-AI-Fire-Smoking-Detection
+```bash
+git clone https://github.com/Pranay-Pandurang-Patil/OpenCV-AI-Fire-Smoking-Detection.git
+cd OpenCV-AI-Fire-Smoking-Detection
+```
 
 ## 2. Create a Virtual Environment
 
 ### Windows
 
-    python -m venv venv
+```bash
+python -m venv venv
+```
 
 Activate it:
 
-    venv\Scripts\activate
+```bash
+venv\Scripts\activate
+```
 
 ## 3. Install Dependencies
 
-    pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
@@ -146,29 +158,27 @@ They are external model files integrated into the OpenCV computer-vision pipelin
 
 The model files are intentionally not stored in this repository.
 
+If a required model is missing, the application downloads it from its respective original source repository.
+
 ---
 
-## 🔥 Fire Detection Model
+## 🔥 Fire & Smoke Detection Model
 
 The fire detection pipeline expects:
 
-    models/fire/best.pt
-
-Create the directory:
-
-    models/
-    └── fire/
-        └── best.pt
-
-### Original Model Source
+```text
+models/fire/best.pt
+```
 
 The Fire & Smoke YOLOv8 model used during development was obtained from:
 
 https://github.com/luminous0219/fire-and-smoke-detection-yolov8
 
-Download the compatible model from the original repository and place it at:
+The original repository uses a YOLOv8-based Fire & Smoke Detection model.
 
-    models/fire/best.pt
+**Original Repository License: AGPL-3.0**
+
+The model is downloaded externally and used by this project as part of the detection pipeline.
 
 Please refer to the original repository for its license, model information, dataset information, and usage terms.
 
@@ -178,25 +188,21 @@ Please refer to the original repository for its license, model information, data
 
 The smoking detection pipeline expects:
 
-    models/smoking/best.onnx
-
-Create the directory:
-
-    models/
-    └── smoking/
-        └── best.onnx
-
-### Original Model Source
+```text
+models/smoking/best.onnx
+```
 
 The Smoking Detection YOLO11 model used during development was obtained from:
 
 https://github.com/alihassanml/Smoking-detection-yolo11
 
-Download the compatible model from the original repository and place it at:
+The original repository provides the `best.onnx` model for smoking detection.
 
-    models/smoking/best.onnx
+**Original Repository License: MIT License**
 
-The original repository is licensed under the MIT License. Please refer to the original repository for the complete license and attribution requirements.
+The model is downloaded externally and used by this project as part of the detection pipeline.
+
+Please refer to the original repository for the complete license and attribution requirements.
 
 ---
 
@@ -212,13 +218,21 @@ Original repository:
 
 https://github.com/luminous0219/fire-and-smoke-detection-yolov8
 
+**License: AGPL-3.0**
+
+Please review the original repository and its license before using, modifying, or redistributing the fire/smoke model.
+
 ### 🚬 Smoking Detection YOLO11 Model
 
 Original repository:
 
 https://github.com/alihassanml/Smoking-detection-yolo11
 
-Please visit the original repositories for model information, training information, datasets, licenses, and usage conditions.
+**License: MIT License**
+
+Please review the original repository and its license before redistributing the smoking model.
+
+Third-party models remain subject to their respective licenses and terms.
 
 ---
 
@@ -226,24 +240,32 @@ Please visit the original repositories for model information, training informati
 
 You can replace the external models with your own compatible object-detection models.
 
-### Fire Detection
+### 🔥 Fire Detection
 
-    models/fire/best.pt
+```text
+models/fire/best.pt
+```
 
-### Smoking Detection
+### 🚬 Smoking Detection
 
-    models/smoking/best.onnx
+```text
+models/smoking/best.onnx
+```
 
 After replacing a model, make sure the model is compatible with the corresponding detection pipeline.
 
 Model paths are configured in:
 
-    config.py
+```text
+config.py
+```
 
 Example:
 
-    FIRE_MODEL_PATH = BASE_DIR / "models" / "fire" / "best.pt"
-    SMOKING_MODEL_PATH = BASE_DIR / "models" / "smoking" / "best.onnx"
+```python
+FIRE_MODEL_PATH = BASE_DIR / "models" / "fire" / "best.pt"
+SMOKING_MODEL_PATH = BASE_DIR / "models" / "smoking" / "best.onnx"
+```
 
 ---
 
@@ -251,7 +273,9 @@ Example:
 
 Start the Streamlit application:
 
-    streamlit run app.py
+```bash
+streamlit run app.py
+```
 
 The application will open in your browser.
 
@@ -294,19 +318,21 @@ Upload a supported video and start detection.
 
 The system processes the video frame-by-frame using OpenCV.
 
-    Video
-     ↓
-    OpenCV VideoCapture
-     ↓
-    Frame
-     ↓
-    YOLO Detection
-     ↓
-    Bounding Boxes
-     ↓
-    Streamlit Preview
-     ↓
-    Next Frame
+```text
+Video
+ ↓
+OpenCV VideoCapture
+ ↓
+Frame
+ ↓
+YOLO Detection
+ ↓
+Bounding Boxes
+ ↓
+Streamlit Preview
+ ↓
+Next Frame
+```
 
 The interface provides processing information such as:
 
@@ -329,19 +355,21 @@ The webcam stream is received through Streamlit-WebRTC.
 
 Each frame is passed through the OpenCV + YOLO detection pipeline.
 
-    Webcam
-     ↓
-    Streamlit-WebRTC
-     ↓
-    OpenCV Frame
-     ↓
-    YOLO
-     ↓
-    Detection
-     ↓
-    Bounding Boxes
-     ↓
-    Live Preview
+```text
+Webcam
+ ↓
+Streamlit-WebRTC
+ ↓
+OpenCV Frame
+ ↓
+YOLO
+ ↓
+Detection
+ ↓
+Bounding Boxes
+ ↓
+Live Preview
+```
 
 ---
 
@@ -349,29 +377,31 @@ Each frame is passed through the OpenCV + YOLO detection pipeline.
 
 The following screenshots demonstrate the main application interface and detection capabilities.
 
-## 🏠 Application Interface
+## 📷 Menu
 
-![Application Interface](screenshots/home.png)
+![Home Menu](screenshots/home.png)
 
-Main Streamlit interface showing the AI Safety Monitoring System, detection modes, and input sources.
 
-## 🔥 Fire Detection — Image
+
+## 🔥 Fire Detection
 
 ![Fire Detection](screenshots/fire_image.png)
 
 Fire detection using an uploaded image with the OpenCV + YOLO detection pipeline.
 
-## 🚬 Smoking Detection — Image
+## 🚬 Smoking Detection
 
 ![Smoking Detection](screenshots/smoke_image.png)
 
 Smoking detection using an uploaded image with the integrated YOLO detection model.
 
-## 🎬 Fire Detection — Video
+## 🎬 Video Detection
 
 ![Video Detection](screenshots/fire_video.png)
 
 Frame-by-frame video processing using OpenCV with YOLO detection and bounding boxes.
+
+
 
 ---
 
@@ -383,7 +413,9 @@ Detects fire-related objects using the configured fire YOLO model.
 
 Expected model:
 
-    models/fire/best.pt
+```text
+models/fire/best.pt
+```
 
 ---
 
@@ -393,7 +425,9 @@ Detects cigarette-smoking-related objects using the configured smoking detection
 
 Expected model:
 
-    models/smoking/best.onnx
+```text
+models/smoking/best.onnx
+```
 
 ---
 
@@ -401,7 +435,9 @@ Expected model:
 
 ## Detection Layer
 
-    detection/
+```text
+detection/
+```
 
 Responsible for:
 
@@ -412,7 +448,9 @@ Responsible for:
 
 ## Service Layer
 
-    services/
+```text
+services/
+```
 
 Responsible for:
 
@@ -422,7 +460,9 @@ Responsible for:
 
 ## Application Layer
 
-    app.py
+```text
+app.py
+```
 
 Responsible for:
 
@@ -516,18 +556,23 @@ Source:
 
 https://github.com/luminous0219/fire-and-smoke-detection-yolov8
 
+**License: AGPL-3.0**
+
+Please refer to the original repository and its license for the applicable terms.
+
 ### 🚬 Smoking Detection YOLO11 Model
 
 Source:
 
 https://github.com/alihassanml/Smoking-detection-yolo11
 
-The original repositories retain their respective ownership and licensing terms.
+**License: MIT License**
 
-Please refer to the original repositories before redistributing their model files.
+Please refer to the original repository and its license for the applicable terms.
+
+The original repositories retain ownership of their respective models and resources.
 
 ---
-
 
 # 👨‍💻 Author
 
@@ -546,6 +591,8 @@ https://github.com/Pranay-Pandurang-Patil
 **OpenCV Computer Vision + YOLO Model Integration**
 
 This project focuses on building a practical computer-vision application using OpenCV and integrating pre-trained YOLO detection models for fire and smoking detection across images, videos, and live webcam streams.
+
+The primary focus is OpenCV-based image and video processing, while the YOLO models are used as external detection components.
 
 ---
 
