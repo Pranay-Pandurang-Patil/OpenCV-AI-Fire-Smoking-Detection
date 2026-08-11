@@ -1,3 +1,9 @@
+import os
+
+# Allow trusted YOLO .pt checkpoints to be loaded
+# with the normal PyTorch loader.
+os.environ["TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD"] = "1"
+
 from pathlib import Path
 from urllib.request import urlretrieve
 
@@ -35,6 +41,7 @@ def download_model():
 
 
 download_model()
+
 
 model = YOLO(FIRE_MODEL_PATH)
 
