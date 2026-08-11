@@ -1,9 +1,3 @@
-import os
-
-# Allow trusted YOLO .pt checkpoints to be loaded
-# with the normal PyTorch loader.
-os.environ["TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD"] = "1"
-
 from pathlib import Path
 from urllib.request import urlretrieve
 
@@ -32,18 +26,41 @@ def download_model():
 
         print("Downloading fire detection model...")
 
+        temp_model_path = model_path.with_suffix(".pt")
+
         urlretrieve(
             MODEL_URL,
-            model_path
+            temp_model_path
         )
 
         print("Fire detection model downloaded.")
+
+        print("Exporting fire model to ONNX...")
+
+        temp_model = YOLO(temp_model_path)
+
+        temp_model.export(
+            format="onnx"
+        )
+
+        exported_model = temp_model_path.with_suffix(".onnx")
+
+        exported_model.rename(
+            model_path
+        )
+
+        temp_model_path.unlink()
+
+        print("Fire ONNX model ready.")
 
 
 download_model()
 
 
-model = YOLO(FIRE_MODEL_PATH)
+model = YOLO(
+    FIRE_MODEL_PATH,
+    task="detect"
+)
 
 
 def detect(image):

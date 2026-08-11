@@ -19,7 +19,7 @@ IMAGE_PATH = BASE_DIR / "images" / "test.png"
 # Models
 # ==========================
 
-FIRE_MODEL_PATH = BASE_DIR / "models" / "fire" / "best.pt"
+FIRE_MODEL_PATH = BASE_DIR / "models" / "fire" / "best.onnx"
 
 SMOKING_MODEL_PATH = BASE_DIR / "models" / "smoking" / "best.onnx"
 

@@ -37,3 +37,4 @@ outputs/
 
 # Streamlit
 .streamlit/secrets.toml
+models/
