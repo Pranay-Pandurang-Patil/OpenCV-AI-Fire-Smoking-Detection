@@ -383,8 +383,8 @@ if input_source == "🖼️ Image":
         with image_col2:
 
             st.subheader(
-                "AI Detection Result"
-            )
+             f"{detection_icon} {detection_name} Detection Result"
+)
 
             with st.spinner(
                 f"Running "
