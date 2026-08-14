@@ -23,13 +23,20 @@ Thumbs.db
 .ruff_cache/
 
 # YOLO model files
-models/**/*.pt
-models/**/*.onnx
-models/**/*.pth
-models/**/*.weights
+models/
+*.pt
+*.onnx
+*.pth
+*.weights
+
+# Datasets
+datasets/
 
 # Generated outputs
 outputs/
+
+# Videos
+videos/
 
 # Temporary files
 *.tmp
@@ -37,4 +44,3 @@ outputs/
 
 # Streamlit
 .streamlit/secrets.toml
-models/
